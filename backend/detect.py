@@ -16,7 +16,7 @@ class DeepFakeDetector:
     def __init__(self, config_path, model_path, device='cuda'):
         self.device = torch.device(device if torch.cuda.is_available() else 'cpu')
         print("device:", self.device)
-        self.config = yaml.load(open(config_path, 'r'), Loader=yaml.Loader)
+        self.config = yaml.load(open(config_path, 'r'), Loader=yaml.SafeLoader)
         
         self.text_encoder = './bert/'
         # self.text_encoder = 'bert-base-uncased'
